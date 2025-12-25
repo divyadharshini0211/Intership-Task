@@ -1,0 +1,37 @@
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            Socket socket = new Socket("localhost", 1234);
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(
+                    socket.getOutputStream(), true);
+
+            BufferedReader keyboard = new BufferedReader(
+                    new InputStreamReader(System.in));
+
+                        new Thread(() -> {
+                try {
+                    String msg;
+                    while ((msg = in.readLine()) != null) {
+                        System.out.println("Message: " + msg);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }).start();
+
+                       String input;
+            while ((input = keyboard.readLine()) != null) {
+                out.println(input);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
