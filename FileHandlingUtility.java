@@ -2,7 +2,7 @@ import java.io.*;
 
 public class FileHandlingUtility {
 
-    // Write data into file
+    
     public static void writeFile(String fileName) {
         try {
             FileWriter fw = new FileWriter(fileName);
@@ -15,7 +15,7 @@ public class FileHandlingUtility {
         }
     }
 
-    // Read data from file
+
     public static void readFile(String fileName) {
         try {
             FileReader fr = new FileReader(fileName);
@@ -32,7 +32,7 @@ public class FileHandlingUtility {
         }
     }
 
-    // Modify file (append data)
+
     public static void modifyFile(String fileName) {
         try {
             FileWriter fw = new FileWriter(fileName, true);
@@ -53,3 +53,4 @@ public class FileHandlingUtility {
         readFile(fileName);    // Read again
     }
 }
+
